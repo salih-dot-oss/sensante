@@ -60,3 +60,9 @@ print("Exploration terminee !")
 print("Prochain lab : entrainer un modele ML")
 print(f"{'=' * 50}")
 
+# ===== REPARTITION PAR SEXE ET DIAGNOSTIC =====
+print("\n--- Répartition par sexe et diagnostic ---")
+cross = df.groupby(["sexe", "diagnostic"]).size()
+print(cross)
+
+
