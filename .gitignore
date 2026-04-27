@@ -2,7 +2,7 @@
 # Environnement Python
 __pycache__ /
 *. pyc
-venv /
+venvpython -m venv venv/
 . env
 # Modele ML ( trop gros pour GitHub )
 models /*. pkl
@@ -12,3 +12,7 @@ Thumbs . db
 # IDE
 . vscode /
 . idea /
+
+# Fichiers temporaires matplotlib
+*. png
+! figures /*. png
