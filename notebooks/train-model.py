@@ -210,5 +210,34 @@ for classe, proba in zip(model_loaded.classes_, probas):
     bar = '#' * int(proba * 30)
     print(f"{classe:8s} : {proba:.1%} {bar}")
     
-    
 
+importances = model.feature_importances_
+
+for name, imp in sorted(
+    zip(feature_cols, importances),
+    key=lambda x: x[1],
+    reverse=True
+):
+    print(f"{name:20s} : {imp:.3f}")
+
+# Patient 1 : jeune sans symptômes
+p1 = pd.DataFrame([[18, 1, 36.5, 120, 0, 0, 0, 0]], columns=feature_cols)
+
+# Patient 2 : adulte avec forte fièvre et symptômes
+p2 = pd.DataFrame([[35, 0, 39.8, 130, 1, 1, 1, 1]], columns=feature_cols)
+
+# Patient 3 : personne âgée avec toux
+p3 = pd.DataFrame([[70, 1, 38.2, 140, 1, 0, 0, 1]], columns=feature_cols)
+
+patients = [p1, p2, p3]
+
+# =========================
+# Prédictions
+# =========================
+
+for i, patient in enumerate(patients, 1):
+    prediction = model_loaded.predict(patient)[0]
+    print(f"Patient {i} → Diagnostic : {prediction}")
+    
+    
+    
